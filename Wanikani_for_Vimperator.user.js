@@ -50,5 +50,22 @@ $(function()
         // summary links
         convertLinks($('#screen-quiz-ready li'));
         convertLinks($('#screen-lesson-ready li'));
+
+        // add hidden text to arrows so that they're accessible with standard
+        // names
+        $('i.icon-chevron-right').each(function(i, item)
+        {
+            var $item = $(item);
+            if ($item.find('span').length > 0)
+                return;
+            $item.wrapInner($('<span>Next</span>').hide());
+        });
+        $('i.icon-chevron-left').each(function(i, item)
+        {
+            var $item = $(item);
+            if ($item.find('span').length > 0)
+                return;
+            $item.wrapInner($('<span>Previous</span>').hide());
+        });
     });
 });
