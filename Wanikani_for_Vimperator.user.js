@@ -13,10 +13,21 @@ function convertLinks($targetItems)
     $targetItems.each(function(i, item)
     {
         var $item = $(item);
+
         // link already added?
         if ($item.find('a').length > 0)
             return;
-        $item.wrapInner($('<a/>').click(function() { $item.click(); }));
+
+        $item.wrapInner(
+            $('<a/>').click(function(e)
+                {
+                    $item.click();
+
+                    // prevent firing event listeners that Wanikani might attach
+                    // at later point in time
+                    e.stopPropagation();
+                    e.preventDefault();
+                }));
     });
 }
 
@@ -35,6 +46,9 @@ function convertLinksInLessons()
 
         // bottom kanji buttons
         convertLinks($('#batch-items li'));
+
+        // big left/right arrows
+        convertLinks($('#prev-btn, #next-btn'));
     });
 }
 
