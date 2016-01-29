@@ -8,29 +8,33 @@
 // @grant       none
 // ==/UserScript==
 
+function convertLinks($targetItems)
+{
+    $targetItems.each(function(i, item)
+    {
+        var $item = $(item);
+        // link already added?
+        if ($item.find('a').length > 0)
+            return;
+        $item.wrapInner($('<a/>').click(function() { $item.click(); }));
+    });
+}
+
 function convertLinksInReviews()
 {
     // buttons under the main input
-    $('#additional-content li').each(function(i, li)
-    {
-        var $li = $(li);
-        $('span', $li).wrapInner($('<a/>').click(function() { $li.click(); }));
-    });
+    convertLinks($('#additional-content li'));
 }
 
 function convertLinksInLessons()
 {
-    // top tabs
-    $('#supplement-nav').bind('DOMSubtreeModified', function()
+    $('#lesson').bind('DOMSubtreeModified', function()
     {
-        $('#supplement-nav li').each(function(i, li)
-        {
-            var $li = $(li);
-            // link already added?
-            if ($li.find('a').length > 0)
-                return;
-            $li.wrapInner($('<a/>').click(function() { $li.click(); }));
-        });
+        // top tabs
+        convertLinks($('#supplement-nav li'));
+
+        // bottom kanji buttons
+        convertLinks($('#batch-items li'));
     });
 }
 
