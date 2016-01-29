@@ -23,7 +23,9 @@ function convertLinks($targetItems, innerSelector)
             $target = $target.find(innerSelector);
 
         $target.wrapInner(
-            $('<a/>').click(function(e)
+            $('<a/>')
+                .css({color: $target.css('color')})
+                .click(function(e)
                 {
                     $item.click();
 
