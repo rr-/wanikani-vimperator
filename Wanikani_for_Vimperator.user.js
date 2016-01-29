@@ -8,7 +8,7 @@
 // @grant       none
 // ==/UserScript==
 
-function convertLinks($targetItems)
+function convertLinks($targetItems, innerSelector)
 {
     $targetItems.each(function(i, item)
     {
@@ -18,7 +18,11 @@ function convertLinks($targetItems)
         if ($item.find('a').length > 0)
             return;
 
-        $item.wrapInner(
+        var $target = $item;
+        if (typeof(innerSelector) !== 'undefined')
+            $target = $target.find(innerSelector);
+
+        $target.wrapInner(
             $('<a/>').click(function(e)
                 {
                     $item.click();
@@ -36,7 +40,7 @@ $(function()
     $('body').bind('DOMSubtreeModified', function()
     {
         // buttons under the main input
-        convertLinks($('#additional-content li'));
+        convertLinks($('#additional-content li'), 'span');
 
         // top tabs
         convertLinks($('#supplement-nav li'));
