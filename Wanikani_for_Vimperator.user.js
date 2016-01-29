@@ -59,14 +59,14 @@ $(function()
 
         // add hidden text to arrows so that they're accessible with standard
         // names
-        $('i.icon-chevron-right').each(function(i, item)
+        $('#next-btn a, i.icon-chevron-right').each(function(i, item)
         {
             var $item = $(item);
             if ($item.find('span').length > 0)
                 return;
             $item.wrapInner($('<span>Next</span>').hide());
         });
-        $('i.icon-chevron-left').each(function(i, item)
+        $('#prev-btn a, i.icon-chevron-left').each(function(i, item)
         {
             var $item = $(item);
             if ($item.find('span').length > 0)
