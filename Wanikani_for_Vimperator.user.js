@@ -39,7 +39,7 @@ function convertLinksInReviews()
 
 function convertLinksInLessons()
 {
-    $('#lesson').bind('DOMSubtreeModified', function()
+    $('body').bind('DOMSubtreeModified', function()
     {
         // top tabs
         convertLinks($('#supplement-nav li'));
@@ -49,6 +49,10 @@ function convertLinksInLessons()
 
         // big left/right arrows
         convertLinks($('#prev-btn, #next-btn'));
+
+        // summary links
+        convertLinks($('#screen-quiz-ready li'));
+        convertLinks($('#screen-lesson-ready li'));
     });
 }
 
