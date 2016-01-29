@@ -31,16 +31,13 @@ function convertLinks($targetItems)
     });
 }
 
-function convertLinksInReviews()
-{
-    // buttons under the main input
-    convertLinks($('#additional-content li'));
-}
-
-function convertLinksInLessons()
+$(function()
 {
     $('body').bind('DOMSubtreeModified', function()
     {
+        // buttons under the main input
+        convertLinks($('#additional-content li'));
+
         // top tabs
         convertLinks($('#supplement-nav li'));
 
@@ -54,10 +51,4 @@ function convertLinksInLessons()
         convertLinks($('#screen-quiz-ready li'));
         convertLinks($('#screen-lesson-ready li'));
     });
-}
-
-$(function()
-{
-    convertLinksInReviews();
-    convertLinksInLessons();
 });
