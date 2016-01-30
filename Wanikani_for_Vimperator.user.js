@@ -57,6 +57,9 @@ $(function()
         convertLinks($('#screen-quiz-ready li'));
         convertLinks($('#screen-lesson-ready li'));
 
+        // show all information
+        convertLinks($('#all-info'));
+
         // add hidden text to arrows so that they're accessible with standard
         // names
         $('#next-btn a, i.icon-chevron-right').each(function(i, item)
