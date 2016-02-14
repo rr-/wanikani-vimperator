@@ -27,12 +27,12 @@ function convertLinks($targetItems, innerSelector)
                 .css({color: $target.css('color')})
                 .click(function(e)
                 {
+                    e.preventDefault();
                     $item.click();
 
                     // prevent firing event listeners that Wanikani might attach
                     // at later point in time
                     e.stopPropagation();
-                    e.preventDefault();
                 }));
     });
 }
@@ -56,6 +56,7 @@ $(function()
         // summary links
         convertLinks($('#screen-quiz-ready li'));
         convertLinks($('#screen-lesson-ready li'));
+        convertLinks($('#screen-lesson-done li'));
 
         // show all information
         convertLinks($('#all-info'));
