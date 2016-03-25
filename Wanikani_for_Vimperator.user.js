@@ -77,5 +77,9 @@ $(function()
                 return;
             $item.wrapInner($('<span>Previous</span>').hide());
         });
+
+        // hide useless cruft in footer
+        $('footer #hotkeys').remove();
+        $('footer #report-errors').remove();
     });
 });
