@@ -61,6 +61,9 @@ $(function()
         // show all information
         convertLinks($('#all-info'));
 
+        // add user synonym button
+        convertLinks($('.user-synonyms-add-btn'));
+
         // add hidden text to arrows so that they're accessible with standard
         // names
         $('#next-btn a, i.icon-chevron-right').each(function(i, item)
